@@ -31,7 +31,7 @@ defmodule VitePhoenix.MixProject do
 
   defp deps do
     [
-      {:ex_doc, ">= 0.0.0", only: :docs, runtime: false}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
