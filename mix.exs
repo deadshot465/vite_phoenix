@@ -1,7 +1,7 @@
 defmodule VitePhoenix.MixProject do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.1.1"
   @source_url "https://github.com/deadshot465/vite_phoenix"
 
   def project do
@@ -25,8 +25,7 @@ defmodule VitePhoenix.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {VitePhoenix, []},
-      env: [default: []]
+      mod: {VitePhoenix, []}
     ]
   end
 
