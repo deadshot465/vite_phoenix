@@ -1,9 +1,8 @@
 defmodule VitePhoenix do
   @default_config %{
-    version: "0.1.0",
     default: [
       args: ~w(vite build --outDir=../../../priv/static --target=es2017),
-      cd: Path.expand("../../assets/js/$PROJECT_NAME", __DIR__)
+      cd: Path.expand("../../../assets/js/$PROJECT_NAME", __DIR__)
     ]
   }
 
