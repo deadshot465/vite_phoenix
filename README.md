@@ -3,7 +3,7 @@
 An experimental light-weight module to help with integrating Vite into your Phoenix project and watching for any code change in Vite's side.
 
 - [Background](#background)
-- [Prerequisites]()
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Setup steps](#setup-steps)
 - [Limitations](#limitations)
