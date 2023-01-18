@@ -1,10 +1,12 @@
 defmodule VitePhoenix do
   @default_config %{
     default: [
-      args: ~w(vite build --outDir=../../../priv/static --target=es2017),
+      args: ~w(vite build --outDir=../../../priv/static --target=$JS_VERSION),
       cd: Path.expand("../../../assets/js/$PROJECT_NAME", __DIR__)
     ]
   }
+
+  @default_js_version "esnext"
 
   @moduledoc """
   An experimental light-weight module to help with integrating [Vite](https://vitejs.dev/) into your Phoenix project and watching for any code change in Vite's side.
@@ -46,8 +48,13 @@ defmodule VitePhoenix do
         raise ArgumentError,
               "You need to at least set the project_name environment variable in your config.exs!"
 
+    js_version = Application.get_env(:vite_phoenix, :js_version) || @default_js_version
+
     config = Application.get_env(:vite_phoenix, profile) || @default_config[:default]
+    target_index = Enum.find_index(config[:args], &String.contains?(&1, "--target"))
+
     Keyword.put(config, :cd, String.replace(config[:cd], "$PROJECT_NAME", project_name))
+    |> Keyword.put(:args, List.replace_at(config[:args], target_index, "--target=#{js_version}"))
   end
 
   @spec run(atom, [binary]) :: non_neg_integer
