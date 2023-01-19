@@ -25,7 +25,7 @@ Adding `vite_phoenix` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:vite_phoenix, "~> 0.1.2"}
+    {:vite_phoenix, "~> 0.1.3"}
   ]
 end
 ```
@@ -51,7 +51,8 @@ and select available templates to bootstrap your project.
 3. In your `config/config.exs`, configure the project name for VitePhoenix. **Your project name here has to match the name you specify when running either `npm create vue@latest` or `npm create vite@latest`**
 ```elixir
 config :vite_phoenix,
-  project_name: "<your-vite-project-name>"
+  project_name: "<your-vite-project-name>",
+  js_version: "es2020" # Optionally provides the JS version for ESBuild in Vite. Default to "esnext"
 ```
 
 4. In your `config/dev.exs`, comment out or remove esbuild watcher for your Phoenix project, and add watcher for VitePhoenix.
@@ -111,7 +112,7 @@ end
 
 ## Limitations
 
-Because VitePhoenix basically delegates everything JavaScript/TypeScript to Vite, and doesn't use Phoenix's templates, it neither benefits from Phoenix's hot reload nor Vite's HMR. Even though Vite does rebuilds and puts latest files into `priv/static` when anything is changed inside your Vite project, currently users have to refresh to see the latest result.
+As aforementioned, since VitePhoenix basically delegates everything JavaScript/TypeScript to Vite, and it doesn't use Phoenix's templates, it neither benefits from Phoenix's hot reload nor Vite's HMR. Even though Vite does rebuilds and puts latest files into `priv/static` when anything is changed inside your Vite project, currently users have to refresh to see the latest result.
 
 ## See also
 - [Phoenix Framework](https://www.phoenixframework.org/)
